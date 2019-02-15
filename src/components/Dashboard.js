@@ -19,14 +19,6 @@ class Dashboard extends React.Component {
     this.setState({ filterName });
   };
 
-  searchFilter() {
-    if (!!this.state.search) {
-      const regEx = new regEx(this.state.search, "i");
-      return _.filter(this.props.signups, signup => regEx.test(signup.email));
-    }
-    return this.props.signups;
-  }
-
   handleChange = ({ target: { value } }) => {
     this.setState({ search: value });
   };
