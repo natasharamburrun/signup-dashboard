@@ -1,0 +1,38 @@
+body {
+  font-family: bariol;
+  background-color: $color-grey-light-3;
+}
+
+.title {
+  color: $color-orange;
+  font-size: $font-Super-Large;
+  margin: 0;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+td {
+  padding: 5px;
+  border: 1px solid black;
+  background-color: $color-white;
+}
+
+th {
+  padding: 10px;
+  color: $color-orange;
+  border: 1px solid black;
+  font-weight: 700;
+  background-color: $color-grey-light-1;
+  font-size: $font-small;
+}
+
+.table-Wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
