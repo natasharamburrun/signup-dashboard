@@ -11,10 +11,19 @@ class Dashboard extends React.Component {
   }
 
   handleSubmit = e => {
+    e.target.reset();
     e.preventDefault();
     const regEx = new RegExp(this.state.search, "i");
     const filterName = _.filter(this.props.signups, signup => {
-      return regEx.test(signup.email);
+      return (
+        regEx.test(signup.email) ||
+        regEx.test(signup.campaign) ||
+        regEx.test(signup.source) ||
+        regEx.test(signup.urlRef) ||
+        regEx.test(signup.optIn) ||
+        regEx.test(signup.region) ||
+        regEx.test(signup.country)
+      );
     });
     this.setState({ filterName });
   };
@@ -24,23 +33,36 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    // console.log(this.state);
+    console.log(this.state);
     return (
-      <div className="search-wrapper">
-        <form className="searchbar container" onSubmit={this.handleSubmit}>
-          <div className="field">
-            <div className="control">
+      <div className="dashboard-wrapper">
+        <div className="search-wrapper">
+          <form className="searchbarContainer" onSubmit={this.handleSubmit}>
+            <div className="field">
               <input
                 type="text"
-                className="searchField"
+                className="input"
                 placeholder="search the dashboard"
                 onChange={this.handleChange}
               />
+              <button className="kano-btn">Search</button>
             </div>
-            <button className="button">Search</button>
+          </form>
+          <div className="options-wrapper">
+            <form onSubmit={this.handleSubmit}>
+              <select value={this.state.value} onChange={this.handleChange}>
+                <option value="">--Please choose an option--</option>
+                <option value="email">Email</option>
+                <option value="campaign">Campaign</option>
+                <option value="source">Source</option>
+                <option value="urlRef">URL Ref</option>
+                <option value="optIn">Opt in</option>
+                <option value="region">Region</option>
+                <option value="country">Country</option>
+              </select>
+            </form>
           </div>
-        </form>
-
+        </div>
         <div className="table-Wrapper">
           <table>
             <thead>

@@ -36,3 +36,48 @@ th {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.field {
+  display: inline-block;
+}
+
+.searchbarContainer {
+  padding: 20px;
+}
+
+.kano-btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "bariol", Helvetica, Arial, sans-serif;
+  border-radius: 1.25rem;
+  background-color: #ff6900;
+  color: #fff;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 19px 29px;
+  margin-top: 2px;
+  font-size: 0.875rem;
+  line-height: 0.125rem;
+}
+
+.input {
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.5rem;
+  width: 100%;
+  outline: none;
+  border: 2px solid transparent;
+  height: 42px;
+  padding: 0 16px;
+  margin: 12px 0 20px;
+  border: 2px solid #e9ebec;
+}

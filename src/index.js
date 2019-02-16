@@ -22,8 +22,8 @@ class App extends React.Component {
         {
           email: "testb@testb.com",
           campaign: "Starwars",
-          source: "abc",
-          urlRef: "123",
+          source: "def",
+          urlRef: "456",
           optIn: "yes",
           region: "London",
           country: "UK"
@@ -31,11 +31,11 @@ class App extends React.Component {
         {
           email: "testc@testc.com",
           campaign: "Education",
-          source: "abc",
-          urlRef: "123",
-          optIn: "yes",
-          region: "London",
-          country: "UK"
+          source: "ghi",
+          urlRef: "456",
+          optIn: "No",
+          region: "Melbourn",
+          country: "Australia"
         }
       ]
     };
