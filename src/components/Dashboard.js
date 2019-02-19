@@ -1,17 +1,28 @@
 import React from "react";
 import _ from "lodash";
+import axios from "axios";
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       signups: [],
-      filterName: []
+      filterName: [],
+      data: []
     };
   }
 
+  componentWillMount() {
+    axios
+      .get("https://gmjuiuy355.execute-api.us-west-1.amazonaws.com/master")
+      .then(res => {
+        this.setState({
+          data: res.data
+        });
+      });
+  }
+
   handleSubmit = e => {
-    e.target.reset();
     e.preventDefault();
     const regEx = new RegExp(this.state.search, "i");
     const filterName = _.filter(this.props.signups, signup => {
@@ -48,20 +59,6 @@ class Dashboard extends React.Component {
               <button className="kano-btn">Search</button>
             </div>
           </form>
-          <div className="options-wrapper">
-            <form onSubmit={this.handleSubmit}>
-              <select value={this.state.value} onChange={this.handleChange}>
-                <option value="">--Please choose an option--</option>
-                <option value="email">Email</option>
-                <option value="campaign">Campaign</option>
-                <option value="source">Source</option>
-                <option value="urlRef">URL Ref</option>
-                <option value="optIn">Opt in</option>
-                <option value="region">Region</option>
-                <option value="country">Country</option>
-              </select>
-            </form>
-          </div>
         </div>
         <div className="table-Wrapper">
           <table>
