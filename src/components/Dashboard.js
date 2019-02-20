@@ -1,6 +1,5 @@
 import React from "react";
 import _ from "lodash";
-// import axios from "axios";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -38,12 +37,6 @@ class Dashboard extends React.Component {
       );
     });
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    let filterResults = this.filterSearch(this.state.search);
-    this.setState({ filterResults });
-    console.log(filterResults);
-  };
 
   handleChange = ({ target: { value } }) => {
     this.setState({ search: value });
@@ -62,7 +55,6 @@ class Dashboard extends React.Component {
                 placeholder="search the dashboard"
                 onChange={this.handleChange}
               />
-              <button className="kano-btn">Search</button>
             </div>
           </form>
         </div>
