@@ -7,7 +7,7 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       signups: [],
-      filterName: [],
+      filterResults: [],
       data: []
     };
   }
@@ -24,21 +24,25 @@ class Dashboard extends React.Component {
       .then(json => this.setState({ data: json }));
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
+  filterSearch = () => {
     const regEx = new RegExp(this.state.search, "i");
-    const filterName = _.filter(this.props.signups, signup => {
+    return _.filter(this.state.data.result, result => {
       return (
-        regEx.test(signup.email) ||
-        regEx.test(signup.campaign) ||
-        regEx.test(signup.source) ||
-        regEx.test(signup.urlRef) ||
-        regEx.test(signup.optIn) ||
-        regEx.test(signup.region) ||
-        regEx.test(signup.country)
+        regEx.test(result.email) ||
+        regEx.test(result.campaign) ||
+        regEx.test(result.source) ||
+        regEx.test(result.url_ref) ||
+        regEx.test(result.opt_in) ||
+        regEx.test(result.region) ||
+        regEx.test(result.country)
       );
     });
-    this.setState({ filterName });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    let filterResults = this.filterSearch(this.state.search);
+    this.setState({ filterResults });
+    console.log(filterResults);
   };
 
   handleChange = ({ target: { value } }) => {
@@ -76,18 +80,15 @@ class Dashboard extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {(this.state.filterName.length
-                ? this.state.filterName
-                : this.props.signups
-              ).map(signup => (
-                <tr key={signup.id}>
-                  <td>{signup.email}</td>
-                  <td>{signup.campaign}</td>
-                  <td>{signup.source}</td>
-                  <td>{signup.urlRef}</td>
-                  <td>{signup.optIn}</td>
-                  <td>{signup.region}</td>
-                  <td>{signup.country}</td>
+              {this.filterSearch().map(result => (
+                <tr key={result.id}>
+                  <td>{result.email}</td>
+                  <td>{result.campaign}</td>
+                  <td>{result.source}</td>
+                  <td>{result.url_ref}</td>
+                  <td>{result.opt_in}</td>
+                  <td>{result.region}</td>
+                  <td>{result.country}</td>
                 </tr>
               ))}
             </tbody>
