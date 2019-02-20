@@ -1,6 +1,6 @@
 import React from "react";
 import _ from "lodash";
-import axios from "axios";
+// import axios from "axios";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -13,13 +13,15 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount() {
-    axios
-      .get("https://gmjuiuy355.execute-api.us-west-1.amazonaws.com/master")
-      .then(res => {
-        this.setState({
-          data: res.data
-        });
-      });
+    fetch("https://gmjuiuy355.execute-api.us-west-1.amazonaws.com/master", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "KanoComputing"
+      }
+    })
+      .then(res => res.json())
+      .then(json => this.setState({ data: json }));
   }
 
   handleSubmit = e => {
