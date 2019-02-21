@@ -47,12 +47,12 @@ class Dashboard extends React.Component {
     return (
       <div className="dashboard-wrapper">
         <div className="search-wrapper">
-          <form className="searchbarContainer" onSubmit={this.handleSubmit}>
+          <form className="searchbarContainer">
             <div className="field">
               <input
                 type="text"
                 className="input"
-                placeholder="search the dashboard"
+                placeholder="Search the dashboard"
                 onChange={this.handleChange}
               />
             </div>
@@ -78,7 +78,7 @@ class Dashboard extends React.Component {
                   <td>{result.campaign}</td>
                   <td>{result.source}</td>
                   <td>{result.url_ref}</td>
-                  <td>{result.opt_in}</td>
+                  <td>{result.opt_in ? "Yes" : "No"}</td>
                   <td>{result.region}</td>
                   <td>{result.country}</td>
                 </tr>
